@@ -1,0 +1,12 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "Pardus PostgreSQL 18.6", "Group": "Odev", "Host": "postgres",
+      "Port": 5432, "MaintenanceDB": "odev", "Username": "adem", "SSLMode": "prefer"
+    },
+    "2": {
+      "Name": "Nexus metadata", "Group": "Odev", "Host": "postgres",
+      "Port": 5432, "MaintenanceDB": "nexus", "Username": "adem", "SSLMode": "prefer"
+    }
+  }
+}
