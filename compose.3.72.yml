@@ -1,0 +1,20 @@
+# Independent reference deployment. Do not reuse a newer Nexus data volume.
+# Usage: sudo docker compose -f compose.3.72.yml up -d
+name: pardus-nexus372
+services:
+  nexus372:
+    image: sonatype/nexus3:3.72.0-java17-alpine
+    container_name: odev-nexus372
+    hostname: kizilkoyunlu
+    restart: unless-stopped
+    environment:
+      INSTALL4J_ADD_VM_PARAMS: >-
+        -Xms1024m -Xmx1024m -XX:MaxDirectMemorySize=1024m
+        -Djava.util.prefs.userRoot=/nexus-data
+    ports:
+      - "${BIND_IP:-127.0.0.1}:8082:8081"
+    volumes:
+      - nexus372-data:/nexus-data
+    stop_grace_period: 120s
+volumes:
+  nexus372-data:
